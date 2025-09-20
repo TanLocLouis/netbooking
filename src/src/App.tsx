@@ -1,16 +1,18 @@
 import './App.css'
-import Footer from './Footer.tsx'
-import MainContainer from './MainContainer.tsx'
-import Navbar from './Navbar.tsx'
+import { BrowserRouter, Route, Routes } from 'react-router'
+import MainWebsite from './MainWebsite'
+import SignUp from './SignUp'
+import Login from './Login'
 
 function App() {
   return (
-    <>
-      <div style={{"height": "100px"}}></div>
-      <Navbar />
-      <MainContainer />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainWebsite/>}/>
+        <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/login" element={<Login/>}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
