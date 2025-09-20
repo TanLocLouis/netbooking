@@ -1,5 +1,6 @@
 import Navbar from "./Navbar";
-import './SignUp.css'
+import './css/SignUp.css'
+import Footer from "./Footer";
 
 function SignUp() {
     return (
@@ -24,6 +25,7 @@ function SignUp() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

@@ -1,4 +1,4 @@
-import "./MainContainer.css"
+import "./css/MainContainer.css"
 
 function MainContainer() {
     return (

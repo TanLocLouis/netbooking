@@ -1,4 +1,4 @@
-import './App.css'
+import './css/App.css'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import MainWebsite from './MainWebsite'
 import SignUp from './SignUp'
