@@ -6,6 +6,7 @@ import Navbar from './Navbar.tsx'
 function App() {
   return (
     <>
+      <div style={{"height": "100px"}}></div>
       <Navbar />
       <MainContainer />
       <Footer />

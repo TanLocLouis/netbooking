@@ -1,0 +1,16 @@
+.main-container-grid {
+    margin: 1em 5em;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+}
+
+.main-container-grid > div {
+    height: 150px;
+
+    background-color: #f0f0f0;
+    padding: 1em;
+    border-radius: 1em;
+    text-align: center;
+}
