@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/user")
+@CrossOrigin(origins = "*")
 public class UserController {
     private final UserService userService;
 
@@ -28,7 +29,7 @@ public class UserController {
         return userService.getAllUser();
     }
 
-    @GetMapping(path = "/auth")
+    @PostMapping(path = "/auth")
     public boolean loginUser(@RequestBody LoginInfo loginInfo) {
         return userService.authUserByEmail(loginInfo);
     }
