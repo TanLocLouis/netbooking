@@ -1,18 +1,11 @@
 package com.example.demo.dao;
 
 import com.example.demo.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.UUID;
 
-public interface UserDao {
-    int insertUser(UUID id, User user);
-    default int insertUser(User user) {
-        UUID id = UUID.randomUUID();
-        insertUser(id, user);
-        return 0;
-    }
-
-    List<User> getAllUser();
+public interface UserDao extends JpaRepository<User, UUID> {
     String getPasswordByEmail(String getPasswordByEmail);
 }

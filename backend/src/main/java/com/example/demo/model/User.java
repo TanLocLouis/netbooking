@@ -14,21 +14,22 @@ public class User {
 
     @Id
     @Column(name = "id")
-    private final UUID id;
+    private UUID id;
 
     @Column(name = "email")
-    private final String email;
+    private String email;
 
     @Column(name = "username")
-    private final String username;
+    private String username;
 
     @Column(name = "password")
-    private final String password;
+    private String password;
 
     @Column(name = "seat_number")
-    private final String seatNumber;
+    private String seatNumber;
 
-   public User() {};
+    public User()  {
+    };
 
     public User(@JsonProperty("id") UUID id,
                 @JsonProperty("email") String email,

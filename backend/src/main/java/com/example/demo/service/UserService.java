@@ -17,12 +17,8 @@ public class UserService {
         this.userDao = userDao;
     }
 
-    public int addUser(User user) {
-        return userDao.insertUser(user);
-    }
-
     public List<User> getAllUser() {
-        return userDao.getAllUser();
+        return userDao.findAll();
     }
 
     public boolean authUserByEmail(LoginInfo loginInfo) {

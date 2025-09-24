@@ -19,11 +19,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping
-    public void addUser(@RequestBody User user) {
-        userService.addUser(user);
-    }
-
     @GetMapping
     public List<User> getAllUser() {
         return userService.getAllUser();
