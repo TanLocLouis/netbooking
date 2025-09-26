@@ -1,0 +1,24 @@
+.show-product-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    padding: 1em;
+}
+
+.show-product-photo-canvas {
+    width: 85%;
+    height: 80vh;
+    object-fit: cover;
+    border-radius: 3em;
+}
+
+.show-product-description {
+    background-color: #f0f0f0;
+    border: solid 1px #ccc;
+    border-radius: 2em;
+
+    padding: 1em;
+    width: 80%;
+    height: 80%vh;
+}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./css/MainContainer.css"
+import { useNavigate } from "react-router";
 
 function MainContainer() {
     const [Product, SetProduct] = useState([{
@@ -19,13 +20,15 @@ function MainContainer() {
         fetchProduct();
     }, []);
 
+    const navigate = useNavigate();
+
     return (
         <>
             <div className="main-container-grid">
                 {
                     Product.map((product) => (
                     <div key={product.id}>
-                        <img className="thumbnail" src={product.media_url} alt={product.name} />
+                        <img onClick={() => navigate("/product/" + product.id)} className="thumbnail" src={product.media_url} alt={product.name} />
                     </div>
                 ))}
             </div>  

@@ -13,8 +13,8 @@ import java.util.UUID;
 public class Product {
 
     @Id
-    @Column(name = "id")
-    private UUID id;
+    @Column(name = "id", columnDefinition = "CHAR(36)")
+    private String id;
 
     @Column(name = "name")
     private String name;
@@ -31,7 +31,7 @@ public class Product {
     public Product()  {
     };
 
-    public Product(@JsonProperty("id") UUID id,
+    public Product(@JsonProperty("id") String id,
                 @JsonProperty("name") String name,
                 @JsonProperty("description") String description,
                 @JsonProperty("price") int price,
@@ -45,7 +45,7 @@ public class Product {
     }
 
     // getters
-    public UUID getId() { return id; }
+    public String getId() { return id; }
     public String getName() { return name; }
     public String getDescription() { return description; }
     public int getPrice() { return price; }

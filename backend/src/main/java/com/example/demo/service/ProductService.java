@@ -24,4 +24,12 @@ public class ProductService {
     public List<Product> getAllProduct() {
         return productDao.findAll();
     }
+
+    public Product getProductById(String id) {
+//        System.out.println("hehe" + id);
+//        productDao.findAll().forEach(p -> System.out.println("DB ID: " + p.getId()));
+        return productDao.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found with id " + id));
+    }
+
 }
