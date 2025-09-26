@@ -22,3 +22,14 @@
     width: 80%;
     height: 80%vh;
 }
+
+.add-to-cart-button {
+    background-color: #282c34;
+    color: white;
+    border: none;
+    border-radius: 1em;
+
+    padding: 0.5em 1em;
+    font-size: 1em;
+    cursor: pointer;
+}
