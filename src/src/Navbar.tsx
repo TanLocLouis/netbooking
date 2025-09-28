@@ -1,5 +1,6 @@
 import './css/Navbar.css'
 import logo from './assets/logo.png'
+import { useState, useEffect } from 'react';
 
 function Navbar() {
   const handleHomeClick = () => {
@@ -13,6 +14,26 @@ function Navbar() {
   const handleLoginClick = () => {
     window.location.href = '/login';
   }
+
+  function countItemInCart() {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    let totalItems = 0;
+    cart.map((item) => {
+      totalItems += item.quantity;
+    });
+
+    return totalItems;
+  }
+
+  const [NumberOfItems, setNumberOfItems] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNumberOfItems(countItemInCart());
+    }
+    , 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -42,7 +63,8 @@ function Navbar() {
               <button onClick={handleSignUpClick}>Sign up</button>
             </li>
             <li>
-              <button>
+              <button onClick={() => {window.location.href = '/cart'}}>
+                <span className='cart-count'>{countItemInCart()}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" 
                     viewBox="0 0 640 640" 
                     width="15px" height="15px" 

@@ -1,0 +1,16 @@
+h4 {
+    margin: 0;
+}
+
+.cart-container {
+    padding: 20px;
+    width: 80vw;
+    margin: 0 auto;
+    background-color: #088cdf53;
+    border-radius: 2em;
+}
+
+.cart-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}

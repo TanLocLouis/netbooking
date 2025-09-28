@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router'
 import MainWebsite from './MainWebsite'
 import SignUp from './SignUp'
 import Login from './Login'
+import Cart from './Cart'
 import ShowProduct from './ShowProduct'
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<MainWebsite/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/login" element={<Login/>}/>
+        <Route path="/cart" element={<Cart />}/>
         <Route path="/product/:product_id" element={<ShowProduct/>}/>
       </Routes>
     </BrowserRouter>
