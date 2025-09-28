@@ -1,16 +1,26 @@
-h4 {
+.cart-container > * {
     margin: 0;
+    padding: 1em;
+    border-top: 1px solid #ccc;
 }
 
 .cart-container {
-    padding: 20px;
-    width: 80vw;
-    margin: 0 auto;
-    background-color: #088cdf53;
+    display: flex;
+    flex-direction: column;
+
+    width: 50vw;
+    padding: 2em;
+    margin: 1em auto;
+    background-color: #b6c3ca53;
     border-radius: 2em;
 }
 
 .cart-items {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
+
+.cart-items-delete {
+    background-color: #b6c3ca53;
+}
+

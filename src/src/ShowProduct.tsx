@@ -18,12 +18,12 @@ function showProduct() {
         let cart = localStorage.getItem("cart");
         let cartItems = cart ? JSON.parse(cart) : [];
 
-        const existing = cartItems.find(item => item.product_id === Product.id);
+        const existing = cartItems.find(item => item.product.id === Product.id);
 
         if (existing) {
             existing.quantity += 1;
         } else {
-            cartItems.push({ product_id: Product.id, quantity: 1 });
+            cartItems.push({ product: Product, quantity: 1 });
         }
 
         localStorage.setItem("cart", JSON.stringify(cartItems));
@@ -54,7 +54,7 @@ function showProduct() {
                     <h2 style={{marginTop: 0}}>Price: {Product.price}</h2>
 
                     <div>
-                        <button onClick={() => handleAddToCart(Product.id)} className='add-to-cart-button'>Add to Cart</button>
+                        <button onClick={() => handleAddToCart(Product)} className='add-to-cart-button'>Add to Cart</button>
                     </div>
                 </div>
 

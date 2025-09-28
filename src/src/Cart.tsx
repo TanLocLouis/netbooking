@@ -1,29 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import './css/cart.css';
+import Navbar from './Navbar';
 
 function Cart() {
     function getItemInCart() {
         const items = localStorage.getItem('cart');
         return items ? JSON.parse(items) : [];
     }
-
     const [cartItems, setCartItems] = useState([]);
-    const fetchProduct = async (product_id) => {
-        const response = await fetch("http://localhost:8080/api/v1/product/" + product_id);
-        const data = await response.json();
-        console.log(data);
-        return data;
-    }
 
     useEffect(() => {
-        for (const item of getItemInCart()) {
-            fetchProduct(item.product_id).then(data => {
-                setCartItems(prevItems => [...prevItems, data]);
-            });
-    }}, []);
+        setCartItems(getItemInCart());
+    }, []);
+
+    const handleDecreaseItem = (item) => {
+        const updatedCart = cartItems.map(cartItem => {
+            if (cartItem.product.id === item.product.id && cartItem.quantity > 1) {
+                return { ...cartItem, quantity: cartItem.quantity - 1 };
+            }
+            return cartItem;
+        });
+        setCartItems(updatedCart);
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+    }
+
+    const handleIncreaseItem = (item) => {
+        const updatedCart = cartItems.map(cartItem => {
+            if (cartItem.product.id === item.product.id) {
+                return { ...cartItem, quantity: cartItem.quantity + 1 };
+            }
+            return cartItem;
+        });
+        setCartItems(updatedCart);
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+    }
+
+    const handleDeleteItem = (item) => {
+        const updatedCart = cartItems.filter(cartItem => cartItem.product.id !== item.product.id);
+        setCartItems(updatedCart);
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+    }
 
     return (
         <>
+            <Navbar />
+
             <div className="cart-container">
                 <h1>Your Cart</h1>
                 <p style={{display: cartItems.length > 0 ? 'none' : 'block'}}>Your cart inamey empty.</p>
@@ -32,12 +53,18 @@ function Cart() {
                     <h2>Quantity</h2>
                     <h2>Price</h2>
                     <h2>Subtotal</h2>
-                    {getItemInCart().map((item, index) => (
+                    <h2></h2>
+                    {cartItems.map((item) => (
                         <>
-                            <h4>{cartItems[index]?.name || 'Loading...'}</h4>
-                            <h4>Quantity: {item.quantity}</h4>
-                            <h4>Price: ${cartItems[index]?.price || 'Loading...'}</h4>
-                            <h4>${item.quantity * cartItems[index]?.price}</h4>
+                            <h4>{item.product.name || 'Loading...'}</h4>
+                            <div style={{display: 'flex', alignItems: 'center', gap: '0.5em'}}>
+                                <h4>Quantity: {item.quantity}</h4>
+                                <button onClick={() => handleDecreaseItem(item)}>-</button>
+                                <button onClick={() => handleIncreaseItem(item)}>+</button>
+                            </div>
+                            <h4>Price: ${item.product.price || 'Loading...'}</h4>
+                            <h4>${item.product.price * item.quantity}</h4>
+                            <button style={{height: '3em', margin: '1em 0'}} onClick={() => handleDeleteItem(item)} className='cart-items-delete'>x</button>
                         </>
                     ))}
                 </div>
