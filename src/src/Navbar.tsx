@@ -26,8 +26,11 @@ function Navbar() {
   }
 
   const [NumberOfItems, setNumberOfItems] = useState(0);
+  const [LoginInfo, SetLoginInfo] = useState(null);
 
   useEffect(() => {
+    localStorage.getItem('user') ? SetLoginInfo(JSON.parse(localStorage.getItem('user'))) : SetLoginInfo(null);
+
     const interval = setInterval(() => {
       setNumberOfItems(countItemInCart());
     }
@@ -41,7 +44,7 @@ function Navbar() {
       <img className="logo" onClick={handleHomeClick} src={logo}></img>
       <div className='navbar-grid'>
         <div className='navbar-grid-left'>
-          <ul style={{ listStyleType: 'none', justifyContent: 'center', display: 'flex', gap: '20px', margin: 'auto', padding: 0 }}>
+          <ul style={{listStyleType: 'none', justifyContent: 'center', display: 'flex', gap: '20px', margin: 'auto', padding: 0 }}>
             <li>
               <button onClick={handleHomeClick}>Home</button>
             </li>
@@ -56,12 +59,19 @@ function Navbar() {
         <div className='navbar-grid-center' style={{ textAlign: 'center' }}></div>
         <div className='navbar-grid-right'>
           <ul style={{ listStyleType: 'none', justifyContent: 'center', display: 'flex', gap: '20px', margin: 'auto', padding: 0 }}>
-            <li>
-              <button onClick={handleLoginClick}>Log in</button>
-            </li>
-            <li>
-              <button onClick={handleSignUpClick}>Sign up</button>
-            </li>
+            <div style={{display: LoginInfo == null ? 'flex' : 'none', gap: '10px'}}>
+              <li>
+                <button onClick={handleLoginClick}>Log in</button>
+              </li>
+              <li>
+                <button onClick={handleSignUpClick}>Sign up</button>
+              </li>
+            </div>
+
+            <div style={{display: LoginInfo != null ? 'flex' : 'none', gap: '10px', alignItems: 'center'}}>
+              Avata here
+            </div>
+
             <li>
               <button onClick={() => {window.location.href = '/cart'}}>
                 <span className='cart-count'>{countItemInCart()}</span>

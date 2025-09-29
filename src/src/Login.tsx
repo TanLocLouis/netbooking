@@ -24,8 +24,12 @@ function SignUp() {
         axios.post(url, LoginInfo, {headers:
             {'Content-Type': 'application/json'}
         }).then(res => {
-            // console.log(res.data);
-            window.location.href = "/";
+            if (res.data == "") {
+                document.getElementById("error-label").style.display = "block";
+            } else {
+                localStorage.setItem('user', JSON.stringify(res.data));
+                window.location.href = "/";
+            }
         }).catch(err => {
         })
         e.preventDefault();
@@ -62,6 +66,9 @@ function SignUp() {
                         <div className="sign-up-field">
                             <button onClick={handleLoginFormSubmitted}>Login</button>
                         </div>
+                        <h4 style={{margin: '0', color: 'red', display: 'none'}} id="error-label">
+                            wrong email or password
+                        </h4>
                     </div>
                 </form>
 
