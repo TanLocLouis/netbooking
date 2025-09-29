@@ -3,28 +3,38 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import './css/SignUp.css'
 import axios from "axios";
+import { redirect } from "react-router";
 
 function SignUp() {
     const [LoginInfo, SetLoginInfo] = useState({
-        username: "",
+        email: "",
         password: ""
     });
+
+    const getUserByID = async (id) => {
+        const url = `http://localhost:8080/api/v1/user/${id}`;
+        const res = await axios.get(url, {headers:
+            {'Content-Type': 'application/json'}
+        });
+        return res.data;
+    }
 
     const handleLoginFormSubmitted = e => {
         const url = "http://localhost:8080/api/v1/user/auth";
         axios.post(url, LoginInfo, {headers:
             {'Content-Type': 'application/json'}
         }).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
+            window.location.href = "/";
         }).catch(err => {
         })
         e.preventDefault();
     }
 
-    const handleUsernameChanged = e => {
+    const handleEmailChanged = e => {
         SetLoginInfo(prev => ({
             ...prev,
-            username: e.target.value
+            email: e.target.value
         }));
     };
 
@@ -42,8 +52,8 @@ function SignUp() {
                 <form>
                     <div className="sign-up-form">
                         <div className="sign-up-field">
-                            <label>Username</label>
-                            <input name="username" onChange={handleUsernameChanged}></input>
+                            <label>Email</label>
+                            <input name="email" onChange={handleEmailChanged}></input>
                         </div>
                         <div className="sign-up-field">
                             <label>Password</label>

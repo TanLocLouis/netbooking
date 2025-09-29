@@ -47,7 +47,7 @@ function Cart() {
 
             <div className="cart-container">
                 <h1>Your Cart</h1>
-                <p style={{display: cartItems.length > 0 ? 'none' : 'block'}}>Your cart inamey empty.</p>
+                <p style={{display: cartItems.length > 0 ? 'none' : 'block'}}>Your cart is empty.</p>
                 <div className='cart-items'>
                     <h2>Item</h2>
                     <h2>Quantity</h2>

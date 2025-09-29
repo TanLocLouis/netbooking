@@ -1,7 +1,8 @@
 package com.example.demo.api;
 
-import com.example.demo.model.LoginInfo;
+import com.example.demo.model.UserLogin;
 import com.example.demo.model.User;
+import com.example.demo.model.UserResponse;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/auth")
-    public boolean loginUser(@RequestBody LoginInfo loginInfo) {
+    public UserResponse loginUser(@RequestBody UserLogin loginInfo) {
         return userService.authUserByEmail(loginInfo);
     }
 }

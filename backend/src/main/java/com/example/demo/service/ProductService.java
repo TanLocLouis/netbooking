@@ -1,17 +1,10 @@
 package com.example.demo.service;
 
 import com.example.demo.dao.ProductDao;
-import com.example.demo.dao.UserDao;
-import com.example.demo.model.LoginInfo;
 import com.example.demo.model.Product;
-import com.example.demo.model.User;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class ProductService {
@@ -26,10 +19,7 @@ public class ProductService {
     }
 
     public Product getProductById(String id) {
-//        System.out.println("hehe" + id);
-//        productDao.findAll().forEach(p -> System.out.println("DB ID: " + p.getId()));
         return productDao.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found with id " + id));
     }
-
 }
