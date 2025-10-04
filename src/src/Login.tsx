@@ -20,7 +20,7 @@ function SignUp() {
     }
 
     const handleLoginFormSubmitted = e => {
-        const url = "http://localhost:8080/api/v1/user/auth";
+        const url = "http://localhost:8080/api/v1/user/auth/login";
         axios.post(url, LoginInfo, {headers:
             {'Content-Type': 'application/json'}
         }).then(res => {
