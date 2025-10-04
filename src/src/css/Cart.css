@@ -1,7 +1,7 @@
 .cart-container > * {
     margin: 0;
     padding: 1em;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid var(--line-lightgray-color);
 }
 
 .cart-container {
@@ -11,7 +11,7 @@
     width: 50vw;
     padding: 2em;
     margin: 1em auto;
-    background-color: #b6c3ca53;
+    background-color: var(--bg-lightgray-color);
     border-radius: 2em;
 }
 
@@ -21,6 +21,6 @@
 }
 
 .cart-items-delete {
-    background-color: #b6c3ca53;
+    background-color: var(--text-cart-color);
 }
 

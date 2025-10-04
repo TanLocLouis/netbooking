@@ -14,8 +14,8 @@
 }
 
 .show-product-description {
-    background-color: #f0f0f0;
-    border: solid 1px #ccc;
+    background-color: var(--bg-lightgray-color);
+    border: solid 2px var(--line-lightgray-color);
     border-radius: 2em;
 
     padding: 1em;
@@ -24,8 +24,8 @@
 }
 
 .add-to-cart-button {
-    background-color: #282c34;
-    color: white;
+    background-color: var(--bg-main-color);
+    color: var(--bg-white-color);
     border: none;
     border-radius: 1em;
 
