@@ -42,15 +42,15 @@ function showProduct() {
         <>
             <Navbar/>
 
-            <div style={{marginTop: "100px"}}></div>
+            <div style={{marginTop: "50px"}}></div>
             <div className="show-product-grid">
                 <div className="show-product-photo">
                     <img className='show-product-photo-canvas' src={Product.media_url}></img>
                 </div>
 
                 <div className="show-product-description">
-                    <h1>{Product.name}</h1>
-                    <p style={{marginBottom: 0}}>{Product.description}</p>
+                    <h2 style={{marginTop: 0, marginBottom: 0}}>{Product.name}</h2>
+                    <p style={{marginBottom: 0, fontWeight: 500}}>{Product.description}</p>
                     <h2 style={{marginTop: 0}}>Price: {Product.price}</h2>
 
                     <div>

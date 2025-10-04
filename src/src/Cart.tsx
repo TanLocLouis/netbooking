@@ -13,6 +13,10 @@ function Cart() {
         setCartItems(getItemInCart());
     }, []);
 
+    const handleCartItemImgClick = (item) => {
+        window.location.href = `/product/${item.product.id}`;
+    }
+
     const handleDecreaseItem = (item) => {
         const updatedCart = cartItems.map(cartItem => {
             if (cartItem.product.id === item.product.id && cartItem.quantity > 1) {
@@ -49,6 +53,7 @@ function Cart() {
                 <h1>Your Cart</h1>
                 <p style={{display: cartItems.length > 0 ? 'none' : 'block'}}>Your cart is empty.</p>
                 <div className='cart-items'>
+                    <h2></h2>
                     <h2>Item</h2>
                     <h2>Quantity</h2>
                     <h2>Price</h2>
@@ -56,11 +61,20 @@ function Cart() {
                     <h2></h2>
                     {cartItems.map((item) => (
                         <>
+                            <img onClick={() => handleCartItemImgClick(item)} className="cart-items-img" src={item.product.media_url}></img>
                             <h4>{item.product.name || 'Loading...'}</h4>
                             <div style={{display: 'flex', alignItems: 'center', gap: '0.5em'}}>
-                                <h4>Quantity: {item.quantity}</h4>
-                                <button onClick={() => handleDecreaseItem(item)}>-</button>
-                                <button onClick={() => handleIncreaseItem(item)}>+</button>
+                                <div>
+                                    <h4 className='cart-items-quantity'>Quantity: {item.quantity}</h4>
+                                    <div className='cart-items-quantity-buttons'>
+                                        <button className="cart-items-decrease" onClick={() => handleDecreaseItem(item)}>
+                                            <span>-</span>
+                                        </button>
+                                        <button className="cart-items-increase" onClick={() => handleIncreaseItem(item)}>
+                                            <span>+</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             <h4>Price: ${item.product.price || 'Loading...'}</h4>
                             <h4>${item.product.price * item.quantity}</h4>
@@ -71,7 +85,7 @@ function Cart() {
                 <div className='cart-total'>
                     <h2>Total: ${cartItems.reduce((total, item, index) => {
                         const cartItem = getItemInCart()[index];
-                        return total + (item.price * (cartItem ? cartItem.quantity : 0));
+                        return total + (item.product.price * (cartItem ? cartItem.quantity : 0));
                     }, 0)}</h2>
                 </div>
             </div>
